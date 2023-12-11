@@ -14,5 +14,23 @@
     <url-pattern>/HelloWorld</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>default</servlet-name>
+    <servlet-class>syy.servlet_learning.Default</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MyServlet</servlet-name>
+    <servlet-class>syy.servlet_learning.MyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyServlet</servlet-name>
+    <url-pattern>/MyServlet</url-pattern>
+  </servlet-mapping>
+
 
 </web-app>
