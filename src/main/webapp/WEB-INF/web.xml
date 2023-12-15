@@ -37,5 +37,21 @@
 <!--      <servlet-name>default</servlet-name>-->
 <!--      <url-pattern>/</url-pattern>-->
 <!--    </servlet-mapping>-->
+  <filter>
+    <filter-name>FirstFilter1</filter-name>
+    <filter-class>syy.filter_learning.FilterLearning</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FirstFilter1</filter-name>
+    <!--根据路径只过滤这个Servlet-->
+    <!--        <url-pattern>/tff</url-pattern>-->
 
+    <!--根据Servlet名称只过滤这个Serlvet-->
+    <servlet-name>ShowServlet</servlet-name>
+  </filter-mapping>
+
+  <session-config>
+<!--    10 min-->
+    <session-timeout>10</session-timeout>
+  </session-config>
 </web-app>
