@@ -1,6 +1,10 @@
 package syy.servlet_implements.enity;
 
-public class User {
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+
+public class User implements HttpSessionBindingListener {
     private Integer id;
     private String username;
     private String password;
@@ -36,6 +40,28 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public void valueBound(HttpSessionBindingEvent event) {
+        System.out.println("User对象绑定");
+        ServletContext servletContext = event.getSession().getServletContext();
+        Integer count = (Integer) servletContext.getAttribute("count");
+        if (count ==null){
+            count=1;
+        } else {
+            count++;
+        }
+        servletContext.setAttribute("count",count);
+    }
+
+    @Override
+    public void valueUnbound(HttpSessionBindingEvent event) {
+        System.out.println("User对象解绑");
+        ServletContext servletContext = event.getSession().getServletContext();
+        Integer count = (Integer) servletContext.getAttribute("count");
+        count--;
+        servletContext.setAttribute("count",count);
     }
 
     @Override

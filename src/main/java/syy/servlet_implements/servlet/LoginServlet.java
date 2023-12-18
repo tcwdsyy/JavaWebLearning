@@ -7,10 +7,7 @@ import syy.servlet_implements.enity.User;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -40,6 +37,11 @@ public class LoginServlet extends HttpServlet {
         if (loginUser == null) {
             req.getRequestDispatcher("/login.html").forward(req, resp);
         } else {
+//            if(req.getParameter("autoLogin").equals("autoLogin")){
+//                Cookie cookie = new Cookie("autoLogin", username+"-"+password);
+//                cookie.setMaxAge(60*60*24);
+//                resp.addCookie(cookie);
+//            }
             ServletContext sc = req.getServletContext();
             HttpSession session = req.getSession();
             String sessionId = session.getId();
@@ -51,6 +53,7 @@ public class LoginServlet extends HttpServlet {
 
             sc.setAttribute("loginMap", map);
             session.setAttribute("user", loginUser);
+
             resp.sendRedirect("/JavaWebLearning/show");
 
 
