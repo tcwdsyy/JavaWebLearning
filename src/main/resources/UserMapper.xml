@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace：所需实现的接口全限定名-->
+<mapper namespace="syy.mybatis_learning.UserDao">
+    <!--id：所需重写的接口抽象方法；resultType：查询后所需返回的对象类型-->
+    <select id="selectUserById" resultType="syy.mybatis_learning.User">
+        <!--select标签是查询标签，里面包裹着查询的sql语句，其中id = #{arg0}是id = ?的意思-->
+        <!--#{arg0}是指id等于方法中第一个形参，也就是id-->
+        SELECT * FROM tb_user where id = #{arg0}
+    </select>
+</mapper>

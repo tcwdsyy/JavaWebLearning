@@ -1,7 +1,7 @@
 package syy.servlet_implements.dao.impl;
 
 import syy.servlet_implements.dao.UserDao;
-import syy.servlet_implements.enity.User;
+import syy.servlet_implements.entity.User;
 import syy.servlet_implements.utils.DBUtils;
 
 import java.sql.Connection;

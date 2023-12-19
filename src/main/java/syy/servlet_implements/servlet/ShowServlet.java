@@ -1,6 +1,6 @@
 package syy.servlet_implements.servlet;
 
-import syy.servlet_implements.enity.User;
+import syy.servlet_implements.entity.User;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

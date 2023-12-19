@@ -1,10 +1,9 @@
 package syy.servlet_implements.filter;
 
-import syy.servlet_implements.enity.User;
+import syy.servlet_implements.entity.User;
 import syy.servlet_implements.utils.CookieUtils;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

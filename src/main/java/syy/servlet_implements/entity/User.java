@@ -1,4 +1,4 @@
-package syy.servlet_implements.enity;
+package syy.servlet_implements.entity;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSessionBindingEvent;

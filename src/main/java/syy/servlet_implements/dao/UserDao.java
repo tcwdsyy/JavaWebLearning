@@ -1,8 +1,7 @@
 package syy.servlet_implements.dao;
 
-import syy.servlet_implements.enity.User;
+import syy.servlet_implements.entity.User;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 public interface UserDao {
