@@ -3,11 +3,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!--namespace：所需实现的接口全限定名-->
-<mapper namespace="syy.mybatis_learning.UserDao">
+<mapper namespace="syy.mybatis_learning.dao.UserDao">
     <!--id：所需重写的接口抽象方法；resultType：查询后所需返回的对象类型-->
-    <select id="selectUserById" resultType="syy.mybatis_learning.User">
+    <select id="selectUserById" resultType="syy.mybatis_learning.entity.User">
         <!--select标签是查询标签，里面包裹着查询的sql语句，其中id = #{arg0}是id = ?的意思-->
         <!--#{arg0}是指id等于方法中第一个形参，也就是id-->
-        SELECT * FROM tb_user where id = #{arg0}
+        SELECT * FROM tb_user WHERE id = #{id}
     </select>
+
+    <insert id="insertUser">
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+            insert into tb_user
+            (username, password, gender, birth)
+            values (#{username},#{password},#{gender},#{birth})
+    </insert>
 </mapper>

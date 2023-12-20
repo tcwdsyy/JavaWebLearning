@@ -4,6 +4,26 @@
 
 <!--MyBatis配置-->
 <configuration>
+    <!--读取jdbc.properties信息-->
+    <properties resource="jdbc.properties" />
+
+    <!-- mybaits-config.xml中开启全局缓存（默认开启） -->
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!-- 定义实体的别名 -->
+    <typeAliases>
+        <!--<typeAlias type="com.qianfeng.entity.User" alias="User" />-->
+        <!--<package name="com.mylifes1110.bean"/>-->
+    </typeAliases>
+
+    <!--分页插件-->
+    <plugins>
+        <!-- com.github.pagehelper为PageHelper类所在包名 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+
     <!--JDBC环境配置、选中默认环境-->
     <environments default="MySqlDB">
         <!--MySql数据库环境配置-->
@@ -11,12 +31,18 @@
             <!--事务管理-->
             <transactionManager type="JDBC"/>
             <!--连接池-->
-            <dataSource type="org.apache.ibatis.datasource.pooled.PooledDataSourceFactory">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+<!--            <dataSource type="org.apache.ibatis.datasource.pooled.PooledDataSourceFactory">-->
+            <dataSource type="syy.mybatis_learning.datasource.MyDruidDataSource">
+<!--                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--                &lt;!&ndash; &转义&amp; &ndash;&gt;-->
+<!--                <property name="url" value="jdbc:mysql://localhost:3306/java_practice?useUnicode=true&amp;characterEncoding=utf8"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="123456"/>-->
+                <property name="driver" value="${jdbc.driver}"/>
                 <!-- &转义&amp; -->
-                <property name="url" value="jdbc:mysql://localhost:3306/java_practice?useUnicode=true&amp;characterEncoding=utf8"/>
-                <property name="username" value="root"/>
-                <property name="password" value="123456"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
@@ -24,7 +50,11 @@
     <!--Mapper注册-->
     <mappers>
         <!--注册Mapper文件的所在位置-->
-        <mapper resource="UserMapper.xml"/>
+        <mapper resource="mappers/UserMapper.xml"/>
+        <mapper resource="mappers/PageMapper.xml"/>
+        <mapper resource="mappers/UserLoginMapper.xml"/>
+        <!--dao层路径-->
+        <!--<package name="syy.mybatis_learning.dao"/>-->
     </mappers>
 
 </configuration>

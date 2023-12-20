@@ -1,5 +1,6 @@
 package syy.servlet_implements.servlet;
 
+import syy.mybatis_learning.utils.MyBatisUtil;
 import syy.servlet_implements.dao.UserDao;
 import syy.servlet_implements.dao.impl.UserDaoImpl;
 import syy.servlet_implements.entity.User;
@@ -15,10 +16,14 @@ import java.util.Map;
 
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
-    private UserDao userDao = new UserDaoImpl();
+    //private UserDao userDao = new UserDaoImpl();
+    private UserDao userDao;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        userDao = MyBatisUtil.getMapper(UserDao.class);
+
+
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
@@ -28,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 
         User loginUser = null;
         try {
-            loginUser = userDao.login(user);
+            loginUser = userDao.login(user); // 传入对象 通过MyBatis自动提取
         } catch (SQLException e) {
             e.printStackTrace();
         }
